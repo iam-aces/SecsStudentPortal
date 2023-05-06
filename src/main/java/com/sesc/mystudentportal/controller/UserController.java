@@ -21,8 +21,8 @@ public class UserController {
 
     @ModelAttribute
     private void userDetails(Model m, Principal p) {
-        String email = p.getName();
-        UserDtls user = userRepo.findByEmail(email);
+        String cnumber = p.getName();
+        UserDtls user = userRepo.findByCnumber(cnumber);
 
         m.addAttribute("user", user);
 
@@ -31,6 +31,20 @@ public class UserController {
     @GetMapping("/")
     public String home() {
         return "user/home";
+    }
+
+   @GetMapping("/enrol")
+    public String enrol() {
+        return "user/enrol";
+    }@GetMapping("/courses")
+    public String courses() {
+        return "user/courses";
+    }@GetMapping("/graduation")
+    public String graduation() {
+        return "user/graduation";
+    }@GetMapping("/profile")
+    public String profile() {
+        return "user/profile";
     }
 
 }

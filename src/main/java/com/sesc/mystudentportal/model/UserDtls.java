@@ -15,11 +15,11 @@ public class UserDtls {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String fullName;
+    private String firstname;
 
-    private String email;
+    private String cnumber;
 
-    private String address;
+    private String lastname;
 
     private String qualification;
 

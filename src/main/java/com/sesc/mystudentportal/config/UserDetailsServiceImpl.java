@@ -16,9 +16,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private UserRepository userRepo;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String cnumber) throws UsernameNotFoundException {
 
-        UserDtls user = userRepo.findByEmail(email);
+        UserDtls user = userRepo.findByCnumber(cnumber);
 
         if (user != null) {
             return new CustomUserDetails(user);

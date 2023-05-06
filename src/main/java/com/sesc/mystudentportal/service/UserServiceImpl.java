@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkEmail(String email) {
+    public boolean checkCnumber(String cnumber) {
 
-        return userRepo.existsByEmail(email);
+        return userRepo.existsByCnumber(cnumber);
     }
 
 }

@@ -6,7 +6,7 @@ import com.sesc.mystudentportal.model.UserDtls;
 
 public interface UserRepository extends JpaRepository<UserDtls, Integer> {
 
-    public boolean existsByEmail(String email);
+    public boolean existsByCnumber(String cnumber);
 
-    public UserDtls findByEmail(String email);
+    public UserDtls findByCnumber(String cnumber);
 }

@@ -37,10 +37,10 @@ public class HomeController {
 
         // System.out.println(user);
 
-        boolean f = userService.checkEmail(user.getEmail());
+        boolean f = userService.checkCnumber(user.getCnumber());
 
         if (f) {
-            session.setAttribute("msg", "Email Id already exists");
+            session.setAttribute("msg", "Cnumber already exists");
         }
 
         else {
