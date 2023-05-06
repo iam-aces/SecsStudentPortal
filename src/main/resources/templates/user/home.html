@@ -34,11 +34,15 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <button class="btn btn-outline-danger" type="submit">LogOut</button>
+        <button class="btn btn-outline-danger" type="submit"><a href="/logout">Logout</a></button>
       </form>
     </div>
   </div>
 </nav>
-
+<h1>User After Login: Home Page</h1>
+<a href="/logout">Logout</a>
+<h1>Name : [[${user.fullName}]]</h1>
+<h1>Email : [[${user.email}]]</h1>
+<h1>Qualification : [[${user.qualification}]]</h1>
 </body>
 </html>
