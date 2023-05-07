@@ -35,7 +35,7 @@ public class HomeController {
     @PostMapping("/createUser")
     public String createuser(@ModelAttribute UserDtls user, HttpSession session) {
 
-        // System.out.println(user);
+        // System.out.println(user); used to test the data from command line
 
         boolean f = userService.checkCnumber(user.getCnumber());
 
