@@ -57,7 +57,7 @@
             <div class="col-md-4">
                 <dl class="row">
                     <dt class="col-sm-3">
-                        Id
+                        Student Id
                     </dt>
                     <dd class="col-sm-9">
                         [[${user.cnumber}]]
@@ -85,7 +85,7 @@
 
                 </dl>
 
-                <form th:action="@{/courses/enrol/create}" method="post">
+                <form action="@{'/courses/enrol/create'}" method="post" >
 
 
                     <div class="form-group">
@@ -96,7 +96,7 @@
 
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" th:id="${course.id}"  th:name="CourseIds" th:value="${course.id}">
-                                <label class="form-check-label" th:text="${course.description}"> </label>
+                                <label class="form-check-label" th:text="${course.title}"> </label>
                             </div>
 
                         </div>

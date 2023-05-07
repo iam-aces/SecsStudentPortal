@@ -1,4 +1,4 @@
-//package com.sesc.mystudentportal.model;
+package com.sesc.mystudentportal.model;
 //
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 //import lombok.Data;
@@ -10,7 +10,7 @@
 //
 //@Data
 //@Entity
-//public class Student {
+public class User_dtld_courses {
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    private Long id;
@@ -24,4 +24,4 @@
 //    private List<Course> courses;
 //
 //
-//}
+}

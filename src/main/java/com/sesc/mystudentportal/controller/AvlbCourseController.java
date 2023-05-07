@@ -2,6 +2,7 @@ package com.sesc.mystudentportal.controller;
 
 import com.sesc.mystudentportal.model.Course;
 import com.sesc.mystudentportal.model.UserDtls;
+import com.sesc.mystudentportal.model.User_dtld_courses;
 import com.sesc.mystudentportal.repository.UserRepository;
 import com.sesc.mystudentportal.service.AvlbCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,10 +58,8 @@ public class AvlbCourseController {
     }
 
     @PostMapping("/enrol/create")
-    public String enrolUser(WebRequest webRequest, Principal principal){
-        getCurrentUser(principal);
+    public String enrolUser(){
 
-        System.out.println("I have the course ids: "+webRequest.getParameter("CourseIds"));
         return "/user/enrol";
 
         //avlbCourseService.enrolUser(UserDtls,)
