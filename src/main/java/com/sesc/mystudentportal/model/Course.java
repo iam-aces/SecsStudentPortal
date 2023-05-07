@@ -14,8 +14,8 @@ public class Course {
     private String description;
     private Double fee;
     private String title;
-    @ManyToOne
-    private Student student;
+//    @ManyToOne
+//    private Student student;
 
 
 

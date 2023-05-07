@@ -33,13 +33,15 @@ public class UserController {
         return "user/home";
     }
 
-   @GetMapping("/enrol")
-    public String enrol() {
-        return "user/enrol";
-    }@GetMapping("/courses")
+//   @GetMapping("/enrol")
+//    public String enrol() {
+//        return "user/enrol";
+//    }
+    @GetMapping("/courses")
     public String courses() {
         return "user/courses";
-    }@GetMapping("/graduation")
+    }
+    @GetMapping("/graduation")
     public String graduation() {
         return "user/graduation";
     }@GetMapping("/profile")
