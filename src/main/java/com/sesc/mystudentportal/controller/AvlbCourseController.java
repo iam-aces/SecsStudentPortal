@@ -1,18 +1,21 @@
 package com.sesc.mystudentportal.controller;
 
+
 import com.sesc.mystudentportal.model.Course;
 import com.sesc.mystudentportal.model.UserDtls;
-import com.sesc.mystudentportal.model.User_dtld_courses;
-import com.sesc.mystudentportal.repository.UserRepository;
 import com.sesc.mystudentportal.service.AvlbCourseService;
+import com.sesc.mystudentportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/courses")
@@ -22,18 +25,20 @@ public class AvlbCourseController {
     @Autowired
     private AvlbCourseService avlbCourseService;
     @Autowired
-    private UserRepository userRepo;
+    private UserService userService;
 
 
-    public AvlbCourseController(AvlbCourseService avlbCourseService, UserRepository userRepo) {
+    public AvlbCourseController(AvlbCourseService avlbCourseService, UserService userService) {
         this.avlbCourseService = avlbCourseService;
-        this.userRepo = userRepo;
+        this.userService = userService;
     }
 
     @ModelAttribute
-    public void init(Model model) {
+    public void init(Model model, Principal principal) {
         List<Course> courses = avlbCourseService.getCourse();
+        List<Course> userCourses = userService.getUser(principal.getName()).getCourses();
         model.addAttribute("courses", courses);
+        model.addAttribute("userCourses", userCourses);
 
     }
 
@@ -44,7 +49,7 @@ public class AvlbCourseController {
     }
 
     private UserDtls getCurrentUser(Principal principal){
-        return userRepo.findByCnumber(principal.getName());
+        return userService.getUser(principal.getName());
     }
 
     @GetMapping("/list")
@@ -57,12 +62,33 @@ public class AvlbCourseController {
         return "user/enrol";
     }
 
+    @GetMapping("/userCourses")
+    public String userCourses() {
+        return "user/viewcourses";
+    }
+
     @PostMapping("/enrol/create")
-    public String enrolUser(){
+    public String enrolUser(WebRequest webRequest, Principal principal, HttpSession session){
 
-        return "/user/enrol";
 
-        //avlbCourseService.enrolUser(UserDtls,)
+        String[] idValues = webRequest.getParameterValues("ids");
+        List<Long> idList = Arrays.stream(idValues)
+                .map(Long::valueOf)
+                .collect(Collectors.toList());
+
+        System.out.println(idList);
+
+        UserDtls updatedUser = userService.updateUser(principal.getName(),idList);
+        System.out.println("User Enrolled Successfully");
+        if (updatedUser != null) {
+            session.setAttribute("msg", "User Enrolled Successfully");
+        } else {
+            session.setAttribute("msg", "Something wrong on server");
+        }
+
+        return "redirect:/courses/enrol";
+
+
 
     }
 

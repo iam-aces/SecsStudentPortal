@@ -7,4 +7,6 @@ import java.util.List;
 @Service
 public interface AvlbCourseService{
      List<Course> getCourse();
+
+     List<Course> getAllCoursesById(List<Long> ids);
 }

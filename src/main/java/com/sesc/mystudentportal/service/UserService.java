@@ -1,12 +1,19 @@
 package com.sesc.mystudentportal.service;
 
 
+
 import com.sesc.mystudentportal.model.UserDtls;
+
+import java.util.List;
 
 public interface UserService {
 
-    public UserDtls createUser(UserDtls user);
+    UserDtls createUser(UserDtls user);
 
-    public boolean checkCnumber(String cnumber);
+    boolean checkCnumber(String cnumber);
+
+    UserDtls getUser (String cnumber);
+
+    UserDtls updateUser(String userId, List<Long> courseIds);
 
 }

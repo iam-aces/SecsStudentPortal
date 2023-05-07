@@ -20,4 +20,7 @@ public class AvlbCourseServiceImpl implements AvlbCourseService{
         return courseRepo.findAll();
     }
 
+    public List<Course> getAllCoursesById(List<Long> ids){
+        return courseRepo.findAllById(ids);
+    }
 }

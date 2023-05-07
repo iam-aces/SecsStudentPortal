@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -20,7 +21,7 @@ public class CourseConfig {
                     "RSEC", 125.0 ,"Reverse Software Engineering Computing");
 
             repository.saveAll(
-                    List.of(sesc,rsec)
+                    Arrays.asList(sesc, rsec)
             );
         };
     }

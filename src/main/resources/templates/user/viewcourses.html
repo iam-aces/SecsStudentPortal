@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Student Portal</title>
@@ -41,12 +40,62 @@
         </div>
     </div>
 </nav>
+<h1 class="h3 mb-2 text-gray-800">View Course</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">List of enrolled courses</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
 
-<h1>your current user details are</h1>
-<h1>Name : [[${user.firstname}]]</h1>
-<h1>Email : [[${user.cnumber}]]</h1>
-<h1>Qualification : [[${user.qualification}]]</h1>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Course Title
+                    </th>
+                    <th>
+                        Course Description
+                    </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
 
-you can update it below
+                <tr th:each="course: ${userCourses}">
+
+                    <td th:text="${course.id}">
+
+                    </td>
+                    <td th:text="${course.title}">
+
+                    </td>
+                    <td th:text="${course.description}">
+
+                    </td>
+                    <td>
+                        <a href="#"
+                           class="btn btn-info  btn-sm">
+                            <i class="fas fa-eye"> </i> View
+                        </a>
+                        <a href="#"  class="btn btn-primary  btn-sm">
+                            <i class="fas fa-pen"> </i> Edit
+                        </a>
+
+                        <a href ="#"  class="btn btn-danger  btn-sm">
+                            <i class="fas fa-trash"> </i> Delete
+                        </a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

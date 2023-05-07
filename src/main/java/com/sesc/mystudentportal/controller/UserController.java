@@ -33,10 +33,7 @@ public class UserController {
         return "user/home";
     }
 
-//   @GetMapping("/enrol")
-//    public String enrol() {
-//        return "user/enrol";
-//    }
+
     @GetMapping("/courses")
     public String courses() {
         return "user/courses";
